@@ -2,6 +2,7 @@ package com.example.android.realestatepractice;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -25,6 +26,7 @@ public class PracticeTest extends AppCompatActivity {
     Question currentQuestion;
     int mQuestionId;
     int mIndex;
+    int score = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,13 +70,24 @@ public class PracticeTest extends AppCompatActivity {
         RadioButton answer = (RadioButton) findViewById(grp.getCheckedRadioButtonId());
         if (currentQuestion.getAnswer().equals(answer.getText().toString())) {
             Toast.makeText(getApplicationContext(), R.string.correct_toast, Toast.LENGTH_LONG).show();
+            score++;
+            Log.d("score", "Your score"+score);
         } else {
             Toast.makeText(getApplicationContext(), "Chosen answer " + answer.getText().toString() +
                             " Real answer " + currentQuestion.getAnswer(),
                     Toast.LENGTH_LONG).show();
+            //TODO: make the question list stop if there are no more questions and let users
+            // return to the home screen
+        } if (mQuestionId < quesList.size()) {
+            currentQuestion = quesList.get(mQuestionId);
+            setQuestionView();
+            Log.d("debug ", "mQuestionId: " + currentQuestion);
+            Log.d("debug ", "questList.size: " + quesList.size());
+        } else {
+            Log.d("debug ", "mQuestionId: " + currentQuestion);
+            Log.d("debug ", "questList.size: " + quesList.size());
+            finish();
         }
-        currentQuestion = quesList.get(mQuestionId);
-        setQuestionView();
 
     }
 
