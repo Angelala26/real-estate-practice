@@ -13,7 +13,8 @@ public class ResultActivity extends AppCompatActivity {
     Button nextButton;
     int score;
     int questListSize;
-    int percentage;
+    double percentage;
+    int roundedPercentage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +28,12 @@ public class ResultActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         score = bundle.getInt("score");
         questListSize = bundle.getInt("questListSize");
-        percentage = (questListSize / score);
+        //TODO: Fix score percentage
+        percentage = ((score / (double)questListSize) * 100);
+        roundedPercentage = (int) percentage;
+
         scoreTextView.setText("Your score is " + score + " out of " + questListSize
-                + ": " + percentage + "%");
+                + ": " + roundedPercentage + "%");
 
         //set next button to go to incorrect question activity
         nextButton.setOnClickListener(new View.OnClickListener() {

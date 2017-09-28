@@ -14,6 +14,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Collections;
 import java.util.List;
 
 import static android.widget.Toast.makeText;
@@ -41,6 +42,7 @@ public class PracticeTest extends AppCompatActivity {
         //access the database and get the questions
         DbHelper db = new DbHelper(this);
         quesList = db.getAllQuestions();
+        Collections.shuffle(quesList);
         currentQuestion = quesList.get(mQuestionId);
 
 
@@ -60,7 +62,7 @@ public class PracticeTest extends AppCompatActivity {
         buttonChoice4 = (Button) findViewById(R.id.answer4);
         nextButton = (Button) findViewById(R.id.next_button);
 
-        //link the question with the text view
+        //link the question with the buttons
         setQuestionView();
 
         //when the next button is clicked, check the answer
@@ -88,7 +90,7 @@ public class PracticeTest extends AppCompatActivity {
             toast.show();
 
             score++;
-            Log.d("score", "Your score"+score);
+            Log.d("score", "Your score" + score);
         } else {
             //otherwise, create an alert that shows the questions with the correct answer
             AlertDialog.Builder builder = new AlertDialog.Builder(PracticeTest.this);
@@ -107,13 +109,10 @@ public class PracticeTest extends AppCompatActivity {
             AlertDialog dialog = builder.create();
             dialog.show();
 
-            //TODO: if the answer is incorrect, save this question with the correct answer
-            //TODO: and print something telling the user that it's wrong and the correct answer
-
-
             //if there are no more questions, go to the result activity with the score
             // and wrongly answered questions
-        } if (mQuestionId < quesList.size()) {
+        }
+        if (mQuestionId < quesList.size()) {
             currentQuestion = quesList.get(mQuestionId);
             setQuestionView();
             Log.d("debug ", "mQuestionId: " + currentQuestion);

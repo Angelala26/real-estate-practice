@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center">
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/try_again_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Try again."
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_margin="25dp"
+        />
 
     <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="100dp">
 
         <TextView
             android:id="@+id/incorrect_question_text_view"
@@ -21,9 +34,4 @@
             android:textSize="20sp"/>
     </ScrollView>
 
-    <Button
-        android:id="@+id/try_again_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Try again."/>
-</LinearLayout>
+</RelativeLayout>
