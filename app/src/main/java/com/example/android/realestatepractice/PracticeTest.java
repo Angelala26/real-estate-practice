@@ -1,7 +1,9 @@
 package com.example.android.realestatepractice;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
@@ -77,11 +79,21 @@ public class PracticeTest extends AppCompatActivity {
             score++;
             Log.d("score", "Your score"+score);
         } else {
-            Toast wrongToast = Toast.makeText(getApplicationContext(),
-                            "Correct answer is " + currentQuestion.getAnswer(),
-                    Toast.LENGTH_LONG);
-            wrongToast.setGravity(Gravity.CENTER, 0, 0);
-            wrongToast.show();
+            AlertDialog.Builder builder = new AlertDialog.Builder(PracticeTest.this);
+            builder.setTitle("Incorrect: " + currentQuestion.getQuestion());
+            builder.setMessage("Your answer: " + answer.getText().toString() +
+                    "\n Correct answer: " + currentQuestion.getAnswer());
+            builder.setCancelable(false);
+            builder.setPositiveButton("Continue",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+
             //TODO: if the answer is incorrect, save this question with the correct answer
             //TODO: and print something telling the user that it's wrong and the correct answer
         } if (mQuestionId < quesList.size()) {
