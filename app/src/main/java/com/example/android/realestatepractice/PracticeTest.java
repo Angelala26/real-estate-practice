@@ -38,6 +38,7 @@ public class PracticeTest extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practice_test);
 
+        //access the database and get the questions
         DbHelper db = new DbHelper(this);
         quesList = db.getAllQuestions();
         currentQuestion = quesList.get(mQuestionId);
@@ -59,8 +60,10 @@ public class PracticeTest extends AppCompatActivity {
         buttonChoice4 = (Button) findViewById(R.id.answer4);
         nextButton = (Button) findViewById(R.id.next_button);
 
+        //link the question with the text view
         setQuestionView();
 
+        //when the next button is clicked, check the answer
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,18 +73,28 @@ public class PracticeTest extends AppCompatActivity {
     }
 
     private void checkAnswer() {
+        //find the group of potential answers and link it to the id
         RadioGroup grp = (RadioGroup) findViewById(R.id.radioGroup1);
         RadioButton answer = (RadioButton) findViewById(grp.getCheckedRadioButtonId());
+        //if the current question's answer equals the user's answer, make a toast that says correct,
+        //  add 1 point to the score, and set the boolean setAnsweredCorrectly as true
         if (currentQuestion.getAnswer().equals(answer.getText().toString())) {
+            //make the boolean true for setAnsweredCorrectly() so we can pull the wronly answered
+            // questions later
+            currentQuestion.setAnsweredCorrectly();
+
             Toast toast = makeText(getApplicationContext(), R.string.correct_toast, Toast.LENGTH_LONG);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
+
             score++;
             Log.d("score", "Your score"+score);
         } else {
+            //otherwise, create an alert that shows the questions with the correct answer
             AlertDialog.Builder builder = new AlertDialog.Builder(PracticeTest.this);
-            builder.setTitle("Incorrect: " + currentQuestion.getQuestion());
-            builder.setMessage("Your answer: " + answer.getText().toString() +
+            builder.setTitle("Incorrect");
+            builder.setMessage(currentQuestion.getQuestion() +
+                    "\n\nYour answer: " + answer.getText().toString() +
                     "\n Correct answer: " + currentQuestion.getAnswer());
             builder.setCancelable(false);
             builder.setPositiveButton("Continue",
@@ -96,6 +109,10 @@ public class PracticeTest extends AppCompatActivity {
 
             //TODO: if the answer is incorrect, save this question with the correct answer
             //TODO: and print something telling the user that it's wrong and the correct answer
+
+
+            //if there are no more questions, go to the result activity with the score
+            // and wrongly answered questions
         } if (mQuestionId < quesList.size()) {
             currentQuestion = quesList.get(mQuestionId);
             setQuestionView();

@@ -7,6 +7,8 @@
         android:layout_height="match_parent"
         android:gravity="center">
 
+
+
         <TextView
             android:id="@+id/score_text_view"
             android:layout_width="wrap_content"
@@ -22,4 +24,17 @@
             android:layout_height="wrap_content"
             android:text="Try again."/>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/incorrect_question_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Questions answered incorrectly."
+            android:layout_gravity="top|center"
+            android:layout_margin="25dp"
+            android:textSize="20dp"/>
+    </ScrollView>
 </LinearLayout>

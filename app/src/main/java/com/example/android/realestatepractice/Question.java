@@ -13,6 +13,7 @@ public class Question {
     private String optc;
     private String optd;
     private String answer;
+    private boolean isAnswerCorrect = false;
 
 
     public Question() {
@@ -90,4 +91,13 @@ public class Question {
     public void setAnswer(String answer) {
         this.answer = answer;
     }
+
+    public void setAnsweredCorrectly() {
+        isAnswerCorrect = true;
+    }
+
+    public boolean isAnsweredCorrectly() {
+        return isAnswerCorrect;
+    }
+
 }
