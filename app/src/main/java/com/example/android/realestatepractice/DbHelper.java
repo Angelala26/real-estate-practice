@@ -111,7 +111,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 "An automated buyer",
                 "A ready, willing, and able buyer");
         this.addQuestion(q8, db);
-        Question q9 = new Question("A Under which type of agency can an owner retain his " +
+        Question q9 = new Question("Under which type of agency can an owner retain his " +
                 "or her right to sell the property themselves and not pay commission?",
                 "Exclusive Agency",
                 "Open Listing",
