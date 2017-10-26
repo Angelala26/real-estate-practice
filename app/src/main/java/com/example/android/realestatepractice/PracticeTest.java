@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -150,6 +151,10 @@ public class PracticeTest extends AppCompatActivity {
         //find the answers and clear the check each time the next question button is pushed
         RadioGroup grp = (RadioGroup) findViewById(R.id.radioGroup1);
         grp.clearCheck();
+        //set the scroll view at the top
+        ScrollView scrollView = (ScrollView) findViewById(R.id.scroll_view);
+        scrollView.fullScroll(ScrollView.FOCUS_UP);
+
     }
 
 }
