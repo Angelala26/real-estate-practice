@@ -107,6 +107,7 @@ public class PracticeTest extends AppCompatActivity {
                         }
                     });
             AlertDialog dialog = builder.create();
+            //TODO: make sure that this alert is shown even with the last question
             dialog.show();
 
             //if there are no more questions, go to the result activity with the score
@@ -146,6 +147,9 @@ public class PracticeTest extends AppCompatActivity {
         buttonChoice3.setText(currentQuestion.getOptc());
         buttonChoice4.setText(currentQuestion.getOptd());
         mQuestionId++;
+        //find the answers and clear the check each time the next question button is pushed
+        RadioGroup grp = (RadioGroup) findViewById(R.id.radioGroup1);
+        grp.clearCheck();
     }
 
 }
