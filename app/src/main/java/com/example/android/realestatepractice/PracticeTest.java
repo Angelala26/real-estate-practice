@@ -70,7 +70,14 @@ public class PracticeTest extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                checkAnswer();
+                //TODO: if there's no answer, pop up error; else, check answer
+                RadioGroup grp = (RadioGroup) findViewById(R.id.radioGroup1);
+                if (grp.getCheckedRadioButtonId() == -1) {
+                    Toast.makeText(getApplicationContext(), "Select an answer please",
+                            Toast.LENGTH_LONG).show();
+                } else {
+                    checkAnswer();
+                }
             }
         });
     }
@@ -82,7 +89,7 @@ public class PracticeTest extends AppCompatActivity {
         //if the current question's answer equals the user's answer, make a toast that says correct,
         //  add 1 point to the score, and set the boolean setAnsweredCorrectly as true
         if (currentQuestion.getAnswer().equals(answer.getText().toString())) {
-            //make the boolean true for setAnsweredCorrectly() so we can pull the wronly answered
+            //make the boolean true for setAnsweredCorrectly() so we can pull the wrongly answered
             // questions later
             currentQuestion.setAnsweredCorrectly();
 
@@ -98,7 +105,7 @@ public class PracticeTest extends AppCompatActivity {
             builder.setTitle("Incorrect");
             builder.setMessage(currentQuestion.getQuestion() +
                     "\n\nYour answer: " + answer.getText().toString() +
-                    "\n Correct answer: " + currentQuestion.getAnswer());
+                    "\n\nCorrect answer: " + currentQuestion.getAnswer());
             builder.setCancelable(false);
             builder.setPositiveButton("Continue",
                     new DialogInterface.OnClickListener() {
