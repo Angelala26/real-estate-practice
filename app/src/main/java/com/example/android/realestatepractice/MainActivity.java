@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void goToGroups() {
-        Intent intent = new Intent(this, SelectGroup.class);
+        Intent intent = new Intent(this, PracticeTest.class);
         startActivity(intent);
     }
 }
