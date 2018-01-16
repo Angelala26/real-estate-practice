@@ -1,6 +1,7 @@
 package com.example.android.realestatepractice;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -32,8 +33,18 @@ public class ResultActivity extends AppCompatActivity {
         percentage = ((score / (double)questListSize) * 100);
         roundedPercentage = (int) percentage;
 
-        scoreTextView.setText("Your score is " + score + " out of " + questListSize
-                + ": " + roundedPercentage + "%");
+        if(roundedPercentage <= 30) {
+            scoreTextView.setTextColor(Color.parseColor("#FF0000"));
+
+        } else if (roundedPercentage > 30 || roundedPercentage <= 65) {
+            scoreTextView.setTextColor(Color.parseColor("#E5E500"));
+
+        } else if (roundedPercentage > 65) {
+            scoreTextView.setTextColor(Color.parseColor("#008000"));
+
+        }
+
+        scoreTextView.setText("Your score: " + roundedPercentage + "%");
 
         //set next button to go to incorrect question activity
         nextButton.setOnClickListener(new View.OnClickListener() {
