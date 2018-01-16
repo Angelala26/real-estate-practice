@@ -1,6 +1,7 @@
 package com.example.android.realestatepractice;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -29,6 +30,7 @@ public class IncorrectQuestion extends AppCompatActivity {
         quesList = db.getAllQuestions();
         //get the questions/answers that were answered incorrectly
         String answerList = getAnswers(quesList);
+        incorrectQuestionTextView.setTextColor(Color.parseColor("#000000"));
         incorrectQuestionTextView.setText("Questions answered incorrectly:\n\n" + answerList);
 
 
@@ -49,7 +51,7 @@ public class IncorrectQuestion extends AppCompatActivity {
 
         for (Question q : questions){
             if(!q.isAnsweredCorrectly()) { // check here if the answer wasn't correct and append it
-                sb.append("Q").append(question).append(") ").append(q.getQuestion()).append("? \n");
+                sb.append("Q").append(question).append(") ").append(q.getQuestion()).append("? \n\n");
                 sb.append("Answer: ").append(q.getAnswer()).append("\n\n");
                 question ++;
             }
