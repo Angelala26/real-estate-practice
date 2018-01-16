@@ -24,6 +24,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Question"
+        android:textColor="#000000"
+        android:textStyle="bold"
         android:textSize="30dp"/>
 
 
@@ -67,14 +69,23 @@
             android:layout_margin="10dp"/>
     </RadioGroup>
 
-
     <Button
         android:id="@+id/next_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="50dp"
-        android:text="Next"/>
+        android:padding="35dp"
+        android:gravity="center"
+        android:text="Next"
+        android:textSize="25sp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#0C030D"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
 
 </LinearLayout>
 </ScrollView>
