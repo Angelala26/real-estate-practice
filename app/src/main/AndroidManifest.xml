@@ -22,6 +22,8 @@
         </activity>
         <activity android:name=".IncorrectQuestion">
         </activity>
+        <activity android:name=".SelectGroup">
+        </activity>
     </application>
 
 </manifest>

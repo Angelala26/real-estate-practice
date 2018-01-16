@@ -18,13 +18,13 @@ public class MainActivity extends AppCompatActivity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goToTest();
+                goToGroups();
             }
         });
     }
 
-    private void goToTest() {
-        Intent intent = new Intent(this, PracticeTest.class);
+    private void goToGroups() {
+        Intent intent = new Intent(this, SelectGroup.class);
         startActivity(intent);
     }
 }
